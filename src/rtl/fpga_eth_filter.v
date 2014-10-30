@@ -40,6 +40,9 @@ module fpga_eth_filter(
                        input wire          clk,
                        input wire          reset_n,
 
+                       input wire          rxd,
+                       output wire         txd,
+
                        output wire         eth0_clk,
                        input wire [7 : 0]  eth0_rxd,
                        input wire          eth0_rxdv,
@@ -52,8 +55,11 @@ module fpga_eth_filter(
                        input wire          eth1_rxdv,
                        input wire          eth1_rxer,
                        output wire [7 : 0] eth1_txd,
-                       output wire         eth1_txen
+                       output wire         eth1_txen,
+
+                       output wire [7 : 0] debug
                       );
+
 
 endmodule //fpga_eth_filter
 
