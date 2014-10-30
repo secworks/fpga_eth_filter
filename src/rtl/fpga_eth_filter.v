@@ -61,6 +61,62 @@ module fpga_eth_filter(
                       );
 
 
+
+  //----------------------------------------------------------------
+  // Internal constant and parameter definitions.
+  //----------------------------------------------------------------
+
+
+  //----------------------------------------------------------------
+  // Registers including update variables and write enable.
+  //----------------------------------------------------------------
+  reg [31 : 0] udp_ctr_reg;
+  reg [31 : 0] udp_ctr_new;
+  reg          udp_ctr_inc;
+  reg          udp_ctr_we;
+
+  reg [31 : 0] tcp_ctr_reg;
+  reg [31 : 0] tcp_ctr_new;
+  reg          tcp_ctr_inc;
+  reg          tcp_ctr_we;
+
+  reg [31 : 0] icmp_ctr_reg;
+  reg [31 : 0] icmp_ctr_new;
+  reg          icmp_ctr_inc;
+  reg          icmp_ctr_we;
+
+
+  //----------------------------------------------------------------
+  // Wires.
+  //----------------------------------------------------------------
+
+
+  //----------------------------------------------------------------
+  // Concurrent connectivity for ports etc.
+  //----------------------------------------------------------------
+  assign debug = 8'h00;
+
+
+
+  //----------------------------------------------------------------
+  // reg_update
+  //
+  // Update functionality for all registers in the core.
+  // All registers are positive edge triggered with asynchronous
+  // active low reset. All registers have write enable.
+  //----------------------------------------------------------------
+  always @ (posedge clk or negedge reset_n)
+    begin: reg_update
+      if (!reset_n)
+        begin
+
+        end
+      else
+        begin
+
+        end
+    end // reg_update
+
 endmodule //fpga_eth_filter
 
 //======================================================================
