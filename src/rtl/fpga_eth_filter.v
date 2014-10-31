@@ -197,6 +197,49 @@ module fpga_eth_filter(
         end
     end // icmp_ctr
 
+
+  //----------------------------------------------------------------
+  // ipv4_ctr
+  //----------------------------------------------------------------
+  always @*
+    begin : ipv4_ctr
+      ipv4_ctr_new = 64'h0000000000000000;
+      ipv4_ctr_we  = 0;
+
+      if (ipv4_ctr_inc)
+        begin
+          ipv4_ctr_new = ipv4_ctr_reg + 1'b1;
+        end
+    end // ipv4_ctr
+
+
+  //----------------------------------------------------------------
+  // ipv6_ctr
+  //----------------------------------------------------------------
+  always @*
+    begin : ipv6_ctr
+      ipv6_ctr_new = 64'h0000000000000000;
+      ipv6_ctr_we  = 0;
+
+      if (ipv6_ctr_inc)
+        begin
+          ipv6_ctr_new = ipv6_ctr_reg + 1'b1;
+        end
+    end // ipv6_ctr
+
+
+  //----------------------------------------------------------------
+  // eth_parser
+  //----------------------------------------------------------------
+  always @*
+    begin : eth_parser
+      udp_ctr_inc  = 0;
+      tcp_ctr_inc  = 0;
+      icmp_ctr_inc = 0;
+      ipv4_ctr_inc = 0;
+      ipv6_ctr_inc = 0;
+    end
+
 endmodule //fpga_eth_filter
 
 //======================================================================
