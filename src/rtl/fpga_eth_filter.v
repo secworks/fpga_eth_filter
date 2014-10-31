@@ -84,6 +84,16 @@ module fpga_eth_filter(
   reg          icmp_ctr_inc;
   reg          icmp_ctr_we;
 
+  reg [63 : 0] ipv4_ctr_reg;
+  reg [63 : 0] ipv4_ctr_new;
+  reg          ipv4_ctr_inc;
+  reg          ipv4_ctr_we;
+
+  reg [63 : 0] ipv6_ctr_reg;
+  reg [63 : 0] ipv6_ctr_new;
+  reg          ipv6_ctr_inc;
+  reg          ipv6_ctr_we;
+
 
   //----------------------------------------------------------------
   // Wires.
