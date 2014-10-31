@@ -160,6 +160,21 @@ module fpga_eth_filter(
         end
     end // tcp_ctr
 
+
+  //----------------------------------------------------------------
+  // icmp_ctr
+  //----------------------------------------------------------------
+  always @*
+    begin : icmp_ctr
+      icmp_ctr_new = 32'h00000000;
+      icmp_ctr_we  = 0;
+
+      if (icmp_ctr_inc)
+        begin
+          icmp_ctr_new = icmp_ctr_reg + 1'b1;
+        end
+    end // icmp_ctr
+
 endmodule //fpga_eth_filter
 
 //======================================================================
