@@ -120,6 +120,8 @@ module fpga_eth_filter(
           udp_ctr_reg  <= 64'h0000000000000000;
           tcp_ctr_reg  <= 64'h0000000000000000;
           icmp_ctr_reg <= 64'h0000000000000000;
+          ipv4_ctr_reg <= 64'h0000000000000000;
+          ipv6_ctr_reg <= 64'h0000000000000000;
         end
       else
         begin
@@ -136,6 +138,16 @@ module fpga_eth_filter(
           if (icmp_ctr_we)
             begin
               icmp_ctr_reg <= icmp_ctr_new;
+            end
+
+          if (ipv4_ctr_we)
+            begin
+              ipv4_ctr_reg <= ipv4_ctr_new;
+            end
+
+          if (ipv6_ctr_we)
+            begin
+              ipv6_ctr_reg <= ipv6_ctr_new;
             end
         end
     end // reg_update
