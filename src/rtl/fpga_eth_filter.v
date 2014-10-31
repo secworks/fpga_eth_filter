@@ -69,18 +69,18 @@ module fpga_eth_filter(
   //----------------------------------------------------------------
   // Registers including update variables and write enable.
   //----------------------------------------------------------------
-  reg [31 : 0] udp_ctr_reg;
-  reg [31 : 0] udp_ctr_new;
+  reg [63 : 0] udp_ctr_reg;
+  reg [63 : 0] udp_ctr_new;
   reg          udp_ctr_inc;
   reg          udp_ctr_we;
 
-  reg [31 : 0] tcp_ctr_reg;
-  reg [31 : 0] tcp_ctr_new;
+  reg [63 : 0] tcp_ctr_reg;
+  reg [63 : 0] tcp_ctr_new;
   reg          tcp_ctr_inc;
   reg          tcp_ctr_we;
 
-  reg [31 : 0] icmp_ctr_reg;
-  reg [31 : 0] icmp_ctr_new;
+  reg [63 : 0] icmp_ctr_reg;
+  reg [63 : 0] icmp_ctr_new;
   reg          icmp_ctr_inc;
   reg          icmp_ctr_we;
 
@@ -107,9 +107,9 @@ module fpga_eth_filter(
     begin: reg_update
       if (!reset_n)
         begin
-          udp_ctr_reg  <= 32'h00000000;
-          tcp_ctr_reg  <= 32'h00000000;
-          icmp_ctr_reg <= 32'h00000000;
+          udp_ctr_reg  <= 64'h0000000000000000;
+          tcp_ctr_reg  <= 64'h0000000000000000;
+          icmp_ctr_reg <= 64'h0000000000000000;
         end
       else
         begin
@@ -136,7 +136,7 @@ module fpga_eth_filter(
   //----------------------------------------------------------------
   always @*
     begin : udp_ctr
-      udp_ctr_new = 32'h00000000;
+      udp_ctr_new = 64'h0000000000000000;
       udp_ctr_we  = 0;
 
       if (udp_ctr_inc)
@@ -151,7 +151,7 @@ module fpga_eth_filter(
   //----------------------------------------------------------------
   always @*
     begin : tcp_ctr
-      tcp_ctr_new = 32'h00000000;
+      tcp_ctr_new = 64'h0000000000000000;
       tcp_ctr_we  = 0;
 
       if (tcp_ctr_inc)
@@ -166,7 +166,7 @@ module fpga_eth_filter(
   //----------------------------------------------------------------
   always @*
     begin : icmp_ctr
-      icmp_ctr_new = 32'h00000000;
+      icmp_ctr_new = 64'h0000000000000000;
       icmp_ctr_we  = 0;
 
       if (icmp_ctr_inc)
