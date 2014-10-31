@@ -145,6 +145,21 @@ module fpga_eth_filter(
         end
     end // udp_ctr
 
+
+  //----------------------------------------------------------------
+  // tcp_ctr
+  //----------------------------------------------------------------
+  always @*
+    begin : tcp_ctr
+      tcp_ctr_new = 32'h00000000;
+      tcp_ctr_we  = 0;
+
+      if (tcp_ctr_inc)
+        begin
+          tcp_ctr_new = tcp_ctr_reg + 1'b1;
+        end
+    end // tcp_ctr
+
 endmodule //fpga_eth_filter
 
 //======================================================================
