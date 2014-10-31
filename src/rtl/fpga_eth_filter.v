@@ -107,11 +107,26 @@ module fpga_eth_filter(
     begin: reg_update
       if (!reset_n)
         begin
-
+          udp_ctr_reg  <= 32'h00000000;
+          tcp_ctr_reg  <= 32'h00000000;
+          icmp_ctr_reg <= 32'h00000000;
         end
       else
         begin
+          if (udp_ctr_we)
+            begin
+              udp_ctr_reg <= udp_ctr_new;
+            end
 
+          if (tcp_ctr_we)
+            begin
+              tcp_ctr_reg <= tcp_ctr_new;
+            end
+
+          if (icmp_ctr_we)
+            begin
+              icmp_ctr_reg <= icmp_ctr_new;
+            end
         end
     end // reg_update
 
