@@ -103,6 +103,7 @@ module fpga_eth_filter(
   //----------------------------------------------------------------
   // Concurrent connectivity for ports etc.
   //----------------------------------------------------------------
+  assign txd   = 1'b0;
   assign debug = 8'h00;
 
 
