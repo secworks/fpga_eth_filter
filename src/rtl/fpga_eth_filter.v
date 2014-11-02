@@ -106,6 +106,15 @@ module fpga_eth_filter(
   assign txd   = 1'b0;
   assign debug = 8'h00;
 
+  // Cross connection of wires
+  eth0_txd  = eth1_rxd;
+  eth0_txen = eth1_rxdv;
+  eth1_txd  = eth0_rxd;
+  eth1_txen = eth0_rxdv;
+
+  eth0_clk = clk;
+  eth1_clk = clk;
+
 
   //----------------------------------------------------------------
   // reg_update
